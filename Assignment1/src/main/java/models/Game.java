@@ -43,8 +43,16 @@ public class Game {
         }
     }
 
-//    public void dealFour() {
-//        Card c1 = deck.get(deck.size()-1);
-//        col1.add(c1);
-//    }
+    //customDeal to setup game for testing purposes
+    public void customDeal(int c1, int c2, int c3, int c4) {
+        cols.get(0).add(deck.get(c1));
+        deck.remove(c1);
+        cols.get(1).add(deck.get(c2));
+        deck.remove(c2);
+        cols.get(2).add(deck.get(c3));
+        deck.remove(c3);
+        cols.get(3).add(deck.get(c4));
+        deck.remove(c4);
+    }
+
 }

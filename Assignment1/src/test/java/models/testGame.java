@@ -42,4 +42,17 @@ public class testGame {
         assertEquals(1,g.cols.get(3).size());
     }
 
+    @Test
+    public void testCustomDeal(){
+        Game g = new Game();
+        g.buildDeck();
+        g.customDeal(0,3,6,9);
+        assertEquals("2Clubs",g.cols.get(0).get(0).toString());
+        assertEquals("3Clubs",g.cols.get(1).get(0).toString());
+        assertEquals("4Clubs",g.cols.get(2).get(0).toString());
+        assertEquals("5Clubs",g.cols.get(3).get(0).toString());
+    }
+
+    
+
 }
