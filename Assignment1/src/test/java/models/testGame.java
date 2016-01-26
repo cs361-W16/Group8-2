@@ -53,6 +53,15 @@ public class testGame {
         assertEquals("5Clubs",g.cols.get(3).get(0).toString());
     }
 
-    
+    @Test
+    public void testRemoveFunction(){
+        Game g = new Game();
+        g.buildDeck();
+        g.customDeal(0,3,6,9);
+        g.remove(2);
+        assertEquals(0,g.cols.get(2).size());
+    }
+
+
 
 }
