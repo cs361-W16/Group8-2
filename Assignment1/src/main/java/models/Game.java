@@ -116,22 +116,32 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        Card c = getTopCard(columnNumber);
-        boolean removeCard = false;
-        for(int i = 0; i < 4; i++){
-            if(i != columnNumber){
-                Card compare = getTopCard(i);
-                if(compare.getSuit() == c.getSuit()){
-                    if(compare.getValue()> c.getValue()){
-                        removeCard = true;
+        if(colHasCards(columnNumber)) {
+            Card c = getTopCard(columnNumber);
+            boolean removeCard = false;
+            for (int i = 0; i < 4; i++) {
+                if (i != columnNumber) {
+                    if (colHasCards(i)) {
+                        Card compare = getTopCard(i);
+                        if (compare.getSuit() == c.getSuit()) {
+                            if (compare.getValue() > c.getValue()) {
+                                removeCard = true;
+                            }
+                        }
                     }
                 }
             }
+            if (removeCard) {
+                this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+            }
         }
-        if(removeCard){
-            this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size()-1);
-        }
+    }
 
+    private boolean colHasCards(int colNumber) {
+        if(this.cols.get(colNumber).size()>0){
+            return true;
+        }
+        return false;
     }
 
     private Card getTopCard(int columnNumber) {
