@@ -77,4 +77,18 @@ public class Game {
     private Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
+
+    public void move(int colFrom, int colTo) {
+        Card cardToMove = getTopCard(colFrom);
+        this.removeCardFromCol(colFrom);
+        this.addCardToCol(colTo,cardToMove);
+    }
+
+    private void addCardToCol(int colTo, Card cardToMove) {
+        cols.get(colTo).add(cardToMove);
+    }
+
+    private void removeCardFromCol(int colFrom) {
+        this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
+    }
 }
