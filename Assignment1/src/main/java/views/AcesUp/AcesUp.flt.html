@@ -13,7 +13,7 @@
         <td >Column4</td>
     </tr>
 
-    <tr><td class="columnOfCards" id="c1">
+    <tr><td class="columnOfCards" id="c0">
         <table>
             <tr><td class="cardLocation l0"></td></tr>
             <tr><td class="cardLocation l1"></td></tr>
@@ -31,6 +31,24 @@
             <tr><td class="cardLocation"></td></tr>
         </table>
     </td>
+        <td class="columnOfCards" id="c1">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+                <tr><td class="cardLocation"></td></tr>
+            </table>
+        </td>
         <td class="columnOfCards" id="c2">
             <table>
                 <tr><td class="cardLocation l0"></td></tr>
@@ -67,28 +85,11 @@
                 <tr><td class="cardLocation"></td></tr>
             </table>
         </td>
-        <td class="columnOfCards" id="c4">
-            <table>
-                <tr><td class="cardLocation l0"></td></tr>
-                <tr><td class="cardLocation l1"></td></tr>
-                <tr><td class="cardLocation l2"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-                <tr><td class="cardLocation"></td></tr>
-            </table>
-        </td>
     </tr>
 </table>
 
 <button id="dealButton">Deal</button>
+
 
 
 <script>
@@ -96,15 +97,30 @@
 var game;
 
 function display(game) {
-//$( '#TodoList' ).html("");
-//  $.each(list.todoItems, function( key, value ) {
-//    $( '#TodoList' ).append(value + "<BR>");
-//  });
-
 console.log(game);
+
+
+    $.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+    });
+
+
+
 }
 
-$.getJSON("http://localhost:8080/game.json", function( data ) {
+$.getJSON("http://localhost:8080/game", function( data ) {
 display(data);
 game = data;
 });
@@ -112,15 +128,12 @@ game = data;
 
 $("#dealButton").click(function(){
 
-list.action = "add";
-list.item = $("#txt_name").val();
-
 $.ajax({
   type: "POST",
-  url: "/todoList.json",
-  data: JSON.stringify(list),
+  url: "/dealGame",
+  data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-        list = data;
+        game = data;
         display(data);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
