@@ -1,0 +1,18 @@
+tr{
+width:500px;
+}
+
+td{
+width:100px;
+height:20px;
+text-align:center;
+}
+
+.title{
+font-weight: bold;
+}
+
+.cardLocation{
+width: 100px;
+background-color:#F0F0F0;
+}

@@ -1,0 +1,195 @@
+<h1>Aces Up</h1>
+
+<link href="/assets/css/AcesUp.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
+
+<body>
+
+<table>
+    <tr class="title">
+        <td>Column0</td>
+        <td >Column1</td>
+        <td >Column2</td>
+        <td >Column3</td>
+    </tr>
+
+    <tr><td class="columnOfCards" id="c0">
+        <table>
+            <tr><td class="cardLocation l0"></td></tr>
+            <tr><td class="cardLocation l1"></td></tr>
+            <tr><td class="cardLocation l2"></td></tr>
+            <tr><td class="cardLocation l3"></td></tr>
+            <tr><td class="cardLocation l4"></td></tr>
+            <tr><td class="cardLocation l5"></td></tr>
+            <tr><td class="cardLocation l6"></td></tr>
+            <tr><td class="cardLocation l7"></td></tr>
+            <tr><td class="cardLocation l8"></td></tr>
+            <tr><td class="cardLocation l9"></td></tr>
+            <tr><td class="cardLocation l10"></td></tr>
+            <tr><td class="cardLocation l11"></td></tr>
+            <tr><td class="cardLocation l12"></td></tr>
+            <tr><td class="cardLocation l13"></td></tr>
+        </table>
+    </td>
+        <td class="columnOfCards" id="c1">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation l3"></td></tr>
+                <tr><td class="cardLocation l4"></td></tr>
+                <tr><td class="cardLocation l5"></td></tr>
+                <tr><td class="cardLocation l6"></td></tr>
+                <tr><td class="cardLocation l7"></td></tr>
+                <tr><td class="cardLocation l8"></td></tr>
+                <tr><td class="cardLocation l9"></td></tr>
+                <tr><td class="cardLocation l10"></td></tr>
+                <tr><td class="cardLocation l11"></td></tr>
+                <tr><td class="cardLocation l12"></td></tr>
+                <tr><td class="cardLocation l13"></td></tr>
+            </table>
+        </td>
+        <td class="columnOfCards" id="c2">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation l3"></td></tr>
+                <tr><td class="cardLocation l4"></td></tr>
+                <tr><td class="cardLocation l5"></td></tr>
+                <tr><td class="cardLocation l6"></td></tr>
+                <tr><td class="cardLocation l7"></td></tr>
+                <tr><td class="cardLocation l8"></td></tr>
+                <tr><td class="cardLocation l9"></td></tr>
+                <tr><td class="cardLocation l10"></td></tr>
+                <tr><td class="cardLocation l11"></td></tr>
+                <tr><td class="cardLocation l12"></td></tr>
+                <tr><td class="cardLocation l13"></td></tr>
+            </table>
+        </td>
+        <td class="columnOfCards" id="c3">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation l3"></td></tr>
+                <tr><td class="cardLocation l4"></td></tr>
+                <tr><td class="cardLocation l5"></td></tr>
+                <tr><td class="cardLocation l6"></td></tr>
+                <tr><td class="cardLocation l7"></td></tr>
+                <tr><td class="cardLocation l8"></td></tr>
+                <tr><td class="cardLocation l9"></td></tr>
+                <tr><td class="cardLocation l10"></td></tr>
+                <tr><td class="cardLocation l11"></td></tr>
+                <tr><td class="cardLocation l12"></td></tr>
+                <tr><td class="cardLocation l13"></td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<button id="dealButton">Deal</button>
+<BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
+
+<BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button>
+
+<script>
+
+var game;
+
+function display(game) {
+console.log(game);
+
+$( '.columnOfCards .cardLocation' ).html("");
+
+    $.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+    });
+
+
+
+}
+
+$.getJSON("http://localhost:8080/game", function( data ) {
+display(data);
+game = data;
+});
+
+
+$("#dealButton").click(function(){
+$.ajax({
+  type: "POST",
+  url: "/dealGame",
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+function removeCard(colNumber){
+$.ajax({
+type: "POST",
+url: "/removeCard/"+colNumber,
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+
+$("#Remove1").click(function(){
+    removeCard(0);
+});
+$("#Remove2").click(function(){
+    removeCard(1);
+});
+$("#Remove3").click(function(){
+    removeCard(2);
+});
+$("#Remove4").click(function(){
+    removeCard(3);
+});
+
+
+$("#moveButton").click(function(){
+var colFrom = $("#from_col").val();
+var colTo = $("#to_col").val();
+$.ajax({
+  type: "POST",
+  url: "/moveCard/"+colFrom+"/"+colTo,
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+</script>
+
+
+
+</body>
+</html>
