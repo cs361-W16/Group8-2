@@ -58,7 +58,7 @@ public class ApplicationController {
     }
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
-        g.move(colFrom,colTo);
+        g.move(colFrom-1,colTo-1);
         return  Results.json().render(g);
     }
 
