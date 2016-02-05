@@ -16,3 +16,38 @@ font-weight: bold;
 width: 100px;
 background-color:#F0F0F0;
 }
+
+/* Start of Brandon's code */
+
+.card{
+	width: 90px;
+	border: 1px solid gray;
+	box-shadow: 1px 1px 3px #888;
+	border-bottom: 10px;
+	min-height: 60px;
+	padding-: 6px;
+	margin: 6px;
+}
+
+.h2{
+  font-weight: lighter;
+  margin-left: 100px;
+  margin-top: -70px;
+}
+
+.p{
+  margin: 10px;
+  font-family: segoe ui;
+  line-height: 1.4em;
+  font-size: 1.2em;
+}
+
+#mainbox{
+  font-family: calibri;
+  box-sizing: border-box;
+  justify-content: left;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* End */

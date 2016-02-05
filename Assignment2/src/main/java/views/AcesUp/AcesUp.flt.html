@@ -1,6 +1,6 @@
 <h1>Aces Up</h1>
 
-<link href="/assets/css/AcesUp.css" rel="stylesheet">
+<link href="../../assets/css/AcesUp.css" rel="stylesheet">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
 <body>
@@ -87,6 +87,62 @@
         </td>
     </tr>
 </table>
+
+<!-- Start of Brandon's code -->
+
+<!-- Implementing jQuery call to fill cards:
+//###General Idea###
+$( "#s0S" ).html(val.suit);
+//"#s zero S" references s0's suit position
+//.html should change its contents
+//val.suit is the part that may be annoying, Michael's code below utilizes something similar but I don't know the correct syntax to implement it
+
+//###Michael's relevant code###
+$( '.columnOfCards .cardLocation' ).html("");
+
+    $.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+    });
+
+}
+-->
+
+<div id="mainbox">
+    <div class="card s0" style="border-bottom: solid blue;">
+        <p style="text-align: left;">Suit</p>
+        <h2 style="text-align: center;">Rank</h2>
+        <p style="text-align: right;">Suit</p>
+    </div>
+    <div class="card s1" style="border-bottom: solid green;">
+        <p style="text-align: left;">Suit</p>
+        <h2 style="text-align: center;">Rank</h2>
+        <p style="text-align: right;">Suit</p>
+    </div>
+    <div class="card s2" style="border-bottom: solid yellow;">
+        <p style="text-align: left;">Suit</p>
+        <h2 style="text-align: center;">Rank</h2>
+        <p style="text-align: right;">Suit</p>
+    </div>
+    <div class="card s3" style="border-bottom: solid red;">
+        <p style="text-align: left;">Suit</p>
+        <h2 style="text-align: center;">Rank</h2>
+        <p style="text-align: right;">Suit</p>
+    </div>
+</div>
+
+<!-- End -->
 
 <button id="dealButton">Deal</button>
 <BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
