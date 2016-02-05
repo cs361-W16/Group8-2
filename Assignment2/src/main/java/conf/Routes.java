@@ -30,6 +30,9 @@ public class Routes implements ApplicationRoutes {
         router.GET().route("/").with(ApplicationController.class, "index");
 //        router.GET().route("/hello_world.json").with(ApplicationController.class, "helloWorldJson");
         router.GET().route("/AcesUp").with(ApplicationController.class, "acesUp");
+		router.GET().route("/sidebar").with(ApplicationController.class, "sidebar");
+		router.GET().route("/header").with(ApplicationController.class, "header");
+		router.GET().route("/footer").with(ApplicationController.class, "footer");
 
         router.GET().route("/game").with(ApplicationController.class, "gameGet");
         router.POST().route("/dealGame").with(ApplicationController.class, "dealPost");
@@ -41,6 +44,7 @@ public class Routes implements ApplicationRoutes {
         ///////////////////////////////////////////////////////////////////////    
         router.GET().route("/assets/webjars/{fileName: .*}").with(AssetsController.class, "serveWebJars");
         router.GET().route("/assets/{fileName: .*}").with(AssetsController.class, "serveStatic");
+		//router.GET().route("/audio").with(ApplicationController.class, "audio"); add to shortcuts if audio to be added
         
         ///////////////////////////////////////////////////////////////////////
         // Index / Catchall shows index page
