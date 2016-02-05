@@ -1,11 +1,34 @@
+div{
+	
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight:700;
+	
+}
+
+button{
+	
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight:700;
+	
+}
+
+h1{
+	
+	font-family: 'Josefin Sans', sans-serif;
+	
+}
+
 tr{
 width:500px;
+font-weight:900;
 }
 
 td{
 width:100px;
 height:20px;
 text-align:center;
+font-size: 14px;
+font-weight:700;
 }
 
 .title{
