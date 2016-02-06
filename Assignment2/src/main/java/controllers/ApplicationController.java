@@ -35,6 +35,22 @@ public class ApplicationController {
     public Result acesUp() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
+	
+	public Result sidebar() {
+        return Results.html().template("views/layout/Sidebar.html");
+    }
+	
+	public Result header() {
+        return Results.html().template("views/layout/header.ftl.html");
+    }
+	
+	public Result footer() {
+        return Results.html().template("views/layout/footer.ftl.html");
+    }
+	
+	//public Result audio() {
+    //    return Results.html().template("assets/audio/"); add to shortcuts if audio to be added
+    //}
     
     public Result gameGet(){
         Game g = new Game();
