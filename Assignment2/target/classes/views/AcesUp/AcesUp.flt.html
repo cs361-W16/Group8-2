@@ -12,9 +12,9 @@
 
 <!-- insert div here -->
 
-<div style = "border: none; vertical-align: top; border-radius: 10px; height: 58%; display: inline-block;">
+<div style = "border: none; vertical-align: top; border-radius: 10px; margin-bottom: 18px; height: 58%; display: inline-block;">
 
-<table style="background-color: #bebebe; border-radius: 5px; border-spacing: 9px; border: solid; border-color: #bebebe;">
+<table style="background-color: #bebebe; border-radius: 5px; height: 104%; border-spacing: 10%; border: solid; border-color: #bebebe;">
     <tr class="title">
         <td style="font-size: 18px;">Column 1</td>
         <td style="font-size: 18px;">Column 2</td>
@@ -107,17 +107,17 @@
 
 <button id="dealButton" style = "border-radius: 15px; width: 100%; height: 19%; background-color: #999999;">Hit Me</button>
 <BR>Remove from: 
-<BR><button id="Remove1" style = "border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column1</button>
-<BR><button id="Remove2" style = "border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column2</button>
-<BR><button id="Remove3" style = "border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column3</button>
-<BR><button id="Remove4" style = "border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column4</button>
+<BR><button id="Remove1" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column 1</button>
+<BR><button id="Remove2" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column 2</button>
+<BR><button id="Remove3" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column 3</button>
+<BR><button id="Remove4" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #999999;">Column 4</button>
 
 <BR>Move from: 
 <BR>column 
 <BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 6%; background-color: #cccccc;" type="text" id="from_col"  /> 
 <BR>to
 <BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 6%; background-color: #cccccc;" type="text" id="to_col"  /> 
-<BR><button id="moveButton" style = "margin-top: 5px; border-radius: 15px; width: 100%; height: 22%; background-color: #999999;">Move</button>
+<BR><button id="moveButton" style = "margin-top: 6px; border-radius: 15px; width: 100%; height: 18.5%; background-color: #999999;">Move</button>
 
 <!-- end div here -->
 
@@ -136,9 +136,9 @@
 
 <!-- footer div -->
 
-<div>
+<div style="display: block; margin-left: 44%; margin-top: 10%; text-align: center; height: 8%;">
 
-<object type="text/html" data="/footer" style="display: block; vertical-align: bottom; text-align: center; height: 100%;"></object>
+<object type="text/html" data="/footer" style="display: block; text-align: center; height: 100%;"></object>
 
 </div>
 
@@ -154,19 +154,19 @@ console.log(game);
 $( '.columnOfCards .cardLocation' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
+        $( '#c0 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid blue;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
     });
 
  $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
+        $( '#c1 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid green;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
     });
 
  $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
+        $( '#c2 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid yellow;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
     });
 
  $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
+        $( '#c3 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid red;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
     });
 
 
