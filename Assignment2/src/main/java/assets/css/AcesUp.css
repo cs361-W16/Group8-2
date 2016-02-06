@@ -9,7 +9,7 @@ button{
 	
 	font-family: 'Josefin Sans', sans-serif;
 	font-weight:700;
-	
+
 }
 
 h1{
@@ -30,6 +30,15 @@ height:20px;
 text-align:center;
 font-size: 14px;
 font-weight:700;
+}
+
+body {
+    background-image: url("");
+    background-color: #cccccc;
+}
+
+#header{
+	margin-top: 50px;
 }
 
 .title{

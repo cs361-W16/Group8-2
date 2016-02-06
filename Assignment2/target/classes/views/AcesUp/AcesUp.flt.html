@@ -4,11 +4,11 @@
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
-<body style="background-color: #dedede;">
+<body style="position: relative; background-color: #dedede;">
 
 <!-- start outer div -->
 
-<div style = "text-align: center; border: none; display: block; width: auto; self-align:center; content-align:center;">
+<div style = "overflow: scroll; position: relative; text-align: center; border: none; display: block; width: auto; self-align:center; content-align:center; height: 100%;">
 
 <!-- insert div here -->
 
@@ -130,15 +130,8 @@
 
 </div>
 
+
 <!-- end outer div -->
-
-</div>
-
-<!-- footer div -->
-
-<div style="display: block; margin-left: 44%; margin-top: 10%; text-align: center; height: 8%;">
-
-<object type="text/html" data="/footer" style="display: block; text-align: center; height: 100%;"></object>
 
 </div>
 
@@ -243,4 +236,9 @@ $.ajax({
 
 
 </body>
+
+<!-- footer -->
+
+<object type="text/html" data="/footer" style="vertical-align: bottom; width: 100%; display: block; text-align: center; height: 10%;"></object>
+
 </html>
