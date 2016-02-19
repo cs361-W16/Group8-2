@@ -1,0 +1,146 @@
+<h1 id="header" style = "text-align: center;">Welcome!</h1>
+<h2 id="header" style = "text-align: center;">Please choose a game style:</h2>
+
+<link href="/assets/css/AcesUp.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
+
+<body style="position: relative; background-color: #dedede;">
+
+<!-- start outer div -->
+
+<div style = "overflow: scroll; position: relative; text-align: center; border: none; display: block; width: auto; self-align:center; content-align:center; height: 100%;">
+
+<!-- insert div here -->
+
+<div style = "border: solid; border-radius: 15px; border-color: #bebebe; background-color: #bebebe; vertical-align: top; display: inline-block; height: 59%; text-align: center;">
+
+<button id="dealButton" style = "border-radius: 15px; width: 100%; height: 19%; background-color: #999999;">Hit Me</button>
+<BR>Remove from: 
+<BR><button id="Remove1" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #00006C;">Column 1</button>
+<BR><button id="Remove2" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #006400;">Column 2</button>
+<BR><button id="Remove3" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #999900;">Column 3</button>
+<BR><button id="Remove4" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #6B0000;">Column 4</button>
+
+<BR>Move from: 
+<BR>column 
+<BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 6%; background-color: #cccccc;" type="text" id="from_col"  /> 
+<BR>to
+<BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 6%; background-color: #cccccc;" type="text" id="to_col"  /> 
+<BR><button id="moveButton" style = "margin-top: 6px; border-radius: 15px; width: 100%; height: 18.5%; background-color: #999999;">Move</button>
+
+<!-- end div here -->
+
+</div>
+
+<!-- end outer div -->
+
+</div>
+
+<!-- code/game access scripts -->
+
+<script>
+
+var game;
+
+function display(game) {
+console.log(game);
+
+$( '.columnOfCards .cardLocation' ).html("");
+
+    $.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid blue;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
+    });
+
+ $.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid green;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
+    });
+
+ $.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid yellow;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
+    });
+
+ $.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html("<div class=\"card s0\" style=\"border-bottom: solid red;\">"+"<p style=\"text-align: left;\">"+val.value+"</p>"+"<h2 style=\"text-align: center;\">"+val.suit+"</h2>"+"<p style=\"text-align: right;\">"+val.value+"</p>");
+    });
+
+
+
+}
+
+$.getJSON("http://localhost:8080/game", function( data ) {
+display(data);
+game = data;
+});
+
+
+$("#dealButton").click(function(){
+$.ajax({
+  type: "POST",
+  url: "/dealGame",
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+function removeCard(colNumber){
+$.ajax({
+type: "POST",
+url: "/removeCard/"+colNumber,
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+
+
+$("#Remove1").click(function(){
+    removeCard(0);
+});
+$("#Remove2").click(function(){
+    removeCard(1);
+});
+$("#Remove3").click(function(){
+    removeCard(2);
+});
+$("#Remove4").click(function(){
+    removeCard(3);
+});
+
+
+$("#moveButton").click(function(){
+var colFrom = $("#from_col").val();
+var colTo = $("#to_col").val();
+$.ajax({
+  type: "POST",
+  url: "/moveCard/"+colFrom+"/"+colTo,
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+</script>
+
+
+
+</body>
+
+<!-- footer -->
+
+<object type="text/html" data="/footer" style="vertical-align: bottom; width: 100%; display: block; text-align: center; height: 10%;"></object>
+
+</html>
