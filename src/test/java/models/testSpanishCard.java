@@ -3,7 +3,7 @@ package models;
 import org.junit.Test;
 import static org.junit.Assert.*;
 /**
- * Created by Jason Ye on 2/18/2016.
+ * Created by Jason on 2/18/2016.
  */
 public class testSpanishCard {
     @Test
