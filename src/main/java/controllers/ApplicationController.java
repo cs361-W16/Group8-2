@@ -33,7 +33,15 @@ public class ApplicationController {
     }
 
     public Result acesUp() {
-        return Results.html().template("views/AcesUp/AcesUp.flt.html");
+        return Results.html().template("views/AcesUp/Welcome.flt.html");
+    }
+	
+	public Result english() {
+        return Results.html().template("views/AcesUp/English/AcesUp.flt.html");
+    }
+	
+	public Result spanish() {
+        return Results.html().template("views/AcesUp/Spanish/AcesUp.flt.html");
     }
 	
 	public Result sidebar() {
