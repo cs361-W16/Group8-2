@@ -8,13 +8,13 @@ import static org.junit.Assert.*;
 public class testSpanishCard {
     @Test
     public void testGetSuit(){
-        Card c = new Card(4,Suit.Swords);
-        assertEquals(Suit.Swords,c.getSuit());
+        Card c = new Card(4,SpanishSuit.Swords);
+        assertEquals(SpanishSuit.Swords,c.getSuit());
     }
 
     @Test
     public void testToString(){
-        Card c = new Card(4,Suit.Swords);
+        Card c = new Card(4,SpanishSuit.Swords);
         assertEquals("4Swords",c.toString());
     }
 
