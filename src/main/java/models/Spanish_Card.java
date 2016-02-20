@@ -10,15 +10,15 @@ import java.io.Serializable;
  */
 public class Spanish_Card extends Game implements Serializable{
     public final int value;
-    public final Spanish_Suit SpanSuit;
+    public final Suit SpanSuit;
 
     @JsonCreator
-    public Spanish_Card(@JsonProperty("value") int value, @JsonProperty("SpanSuit") Spanish_Suit SpanSuit){
+    public Spanish_Card(@JsonProperty("value") int value, @JsonProperty("SpanSuit") Suit SpanSuit){
         this.value = value;
         this.SpanSuit = SpanSuit;
     }
 
-    public Spanish_Suit getSuit(){ return SpanSuit; }
+    public Suit getSuit(){ return SpanSuit; }
 
     public int getValue() { return value;}
 
