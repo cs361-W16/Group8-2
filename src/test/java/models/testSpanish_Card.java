@@ -28,6 +28,5 @@ public class testSpanish_Card {
         g.move(0,2);
         assertEquals(1,g.cols.get(2).size());
         assertEquals(0,g.cols.get(0).size());
-        //fixed
     }
 }
