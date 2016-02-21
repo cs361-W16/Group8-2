@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Random;
 
 /**
- * Created by Jason Ye on 2/20/2016.
+ * Created by Jason Ye on 2/19/2016.
  */
 public class Spanish_Game extends Game{
     public void buildDeck(){
