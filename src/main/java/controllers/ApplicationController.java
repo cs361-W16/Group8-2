@@ -86,4 +86,32 @@ public class ApplicationController {
         return  Results.json().render(g);
     }
 
+    // Spanish functions
+    public Result s_gameGet(){
+        Game g = new Game();
+        g.buildDeck();
+        g.shuffle();
+        g.dealFour();
+
+        return Results.json().render(g);
+    }
+
+    public Result s_dealPost(Context context, Game g) {
+        if(context.getRequestPath().contains("deal")){
+            g.dealFour();
+        }
+        return Results.json().render(g);
+    }
+
+    public Result s_removeCard(Context context, @PathParam("column") int colNumber, Game g){
+        g.remove(colNumber);
+        return  Results.json().render(g);
+    }
+
+    public Result s_moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
+        g.move(colFrom-1,colTo-1);
+        return  Results.json().render(g);
+    }
+
+
 }
