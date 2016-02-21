@@ -1,12 +1,12 @@
-<button id="goBack" style = "margin-top: 6px; border-radius: 15px; width: 100px; height: 25px; background-color: #999999;">Go Back</button>
+<button id="goBack" style = "margin-top: 0px; border-radius: 15px; width: 100px; height: 25px; background-color: #999999;">Go Back</button>
 
-<h1 id="header" style = "text-align: center;">Aces Up Espanol</h1>
+<h1 id="header" style = "text-align: center; vertical-align: top; margin-top: 0px;">Aces Up Espanol</h1>
 
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
-<body style="position: relative; background-color: #ffbbbb;">
+<body style="position: relative; background-color: #ffbbbb; background-image: url(http://globaledge.msu.edu/content/countries/flags/large/es.png);">
 
 <!-- start outer div -->
 
@@ -105,21 +105,21 @@
 
 <!-- insert div here -->
 
-<div style = "border: solid; border-radius: 15px; border-color: #bebebe; background-color: #bebebe; vertical-align: top; display: inline-block; height: 59%; text-align: center;">
+<div style = "border: solid; border-radius: 15px; border-color: #bebebe; background-color: #bebebe; vertical-align: top; display: inline-block; height: 395px; text-align: center;">
 
-<button id="dealButton" style = "border-radius: 15px; width: 100%; height: 19%; background-color: #999999;">Hit Me</button>
+<button id="dealButton" style = "border-radius: 15px; width: 100%; height: 75px; background-color: #999999;">Hit Me</button>
 <BR>Remove from: 
-<BR><button id="Remove1" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #00006C;">Column 1</button>
-<BR><button id="Remove2" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #006400;">Column 2</button>
-<BR><button id="Remove3" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #999900;">Column 3</button>
-<BR><button id="Remove4" style = "margin-top: 2px; border-radius: 5px; width: 100%; height: 6%; background-color: #6B0000;">Column 4</button>
+<BR><button id="Remove1" style = "color: white; margin-top: 2px; border-radius: 5px; width: 100%; height: 25px; background-color: #00006C;">Column 1</button>
+<BR><button id="Remove2" style = "color: white; margin-top: 2px; border-radius: 5px; width: 100%; height: 25px; background-color: #006400;">Column 2</button>
+<BR><button id="Remove3" style = "color: white; margin-top: 2px; border-radius: 5px; width: 100%; height: 25px; background-color: #999900;">Column 3</button>
+<BR><button id="Remove4" style = "color: white; margin-top: 2px; border-radius: 5px; width: 100%; height: 25px; background-color: #6B0000;">Column 4</button>
 
 <BR>Move from: 
 <BR>column 
-<BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 6%; background-color: #cccccc;" type="text" id="from_col"  /> 
+<BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 25px; background-color: #cccccc;" type="text" id="from_col"  /> 
 <BR>to
-<BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 6%; background-color: #cccccc;" type="text" id="to_col"  /> 
-<BR><button id="moveButton" style = "margin-top: 6px; border-radius: 15px; width: 100%; height: 18.5%; background-color: #999999;">Move</button>
+<BR><input style = "text-align: center; border-radius: 10px; width: 100%; height: 25px; background-color: #cccccc;" type="text" id="to_col"  /> 
+<BR><button id="moveButton" style = "margin-top: 6px; border-radius: 15px; width: 100%; height: 75px; background-color: #999999;">Move</button>
 
 <!-- end div here -->
 
@@ -168,7 +168,7 @@ $( '.columnOfCards .cardLocation' ).html("");
 
 }
 
-$.getJSON("http://localhost:8080/game", function( data ) {
+$.getJSON("http://localhost:8080/s-game", function( data ) {
 display(data);
 game = data;
 });
@@ -177,7 +177,7 @@ game = data;
 $("#dealButton").click(function(){
 $.ajax({
   type: "POST",
-  url: "/dealGame",
+  url: "/s-dealGame",
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
@@ -191,7 +191,7 @@ $.ajax({
 function removeCard(colNumber){
 $.ajax({
 type: "POST",
-url: "/removeCard/"+colNumber,
+url: "/s-removeCard/"+colNumber,
 data: JSON.stringify(game),
 success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
 game = data;
@@ -222,7 +222,7 @@ var colFrom = $("#from_col").val();
 var colTo = $("#to_col").val();
 $.ajax({
   type: "POST",
-  url: "/moveCard/"+colFrom+"/"+colTo,
+  url: "/s-moveCard/"+colFrom+"/"+colTo,
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
