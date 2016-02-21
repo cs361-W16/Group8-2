@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Jason Ye on 2/19/2016.
  */
 public class Spanish_Game extends Game{
-    public void buildDeck(){
+    public void buildSpanish(){
         for (int i = 1; i < 11; i++){
             deck.add(new Card(i,Suit.Coins));
             deck.add(new Card(i,Suit.Cups));

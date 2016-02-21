@@ -17,6 +17,7 @@
 package controllers;
 
 import models.Game;
+import models.Spanish_Game;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -88,8 +89,8 @@ public class ApplicationController {
 
     // Spanish functions
     public Result s_gameGet(){
-        Game g = new Game();
-        g.buildDeck();
+        Spanish_Game g = new Spanish_Game();
+        g.buildSpanish();
         g.shuffle();
         g.dealFour();
 
