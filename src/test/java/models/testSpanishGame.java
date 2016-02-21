@@ -34,7 +34,7 @@ public class testSpanishGame {
         assertEquals("3Swords",g.cols.get(2).toString());
         assertEquals("4Swords",g.cols.get(3).toString());
     }
-
+    
     @Test
     public void testSpanishGameRemove(){
         Game g = new Spanish_Game();
