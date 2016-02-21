@@ -29,7 +29,7 @@ import static org.junit.Assert.assertThat;
 public class ApiControllerDocTesterTest extends NinjaDocTester {
     
     String URL_INDEX = "/";
-    String URL_ACES_UP = "/AcesUp";
+    String URL_ACES_UP = "/AcesUp/English";
     
     @Test
     public void testGetIndex() {
